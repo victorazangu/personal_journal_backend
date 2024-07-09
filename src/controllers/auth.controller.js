@@ -31,7 +31,7 @@ const register = async (req, res) => {
             password: hashedPassword,
         });
         const token = tokenService.generateToken(newUser);
-        return res.status(201).json({ token });
+        return res.status(201).json({ token, user: newUser });
     } catch (error) {
         console.error(error)
         return res.status(500).json({ message: "Server side error" });

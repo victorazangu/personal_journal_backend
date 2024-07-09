@@ -8,7 +8,7 @@ const createJournal = {
             content: Joi.string().required(),
             category_id: Joi.number().integer().required(),
         })
-        .min(1),
+      
 };
 
 const listAllCategories = {
@@ -18,7 +18,7 @@ const listAllCategories = {
             pageSize: Joi.number().integer(),
     
         })
-        .min(1),
+ 
 };
 
 const listAllJournalEntriesByCategory = {

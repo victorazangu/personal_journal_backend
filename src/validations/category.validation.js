@@ -6,7 +6,7 @@ const createCategory = {
         .keys({
             name: Joi.string().required(),
         })
-        .min(1),
+     
 };
 
 const listAllCategories = {
@@ -15,7 +15,7 @@ const listAllCategories = {
             page: Joi.number().integer(),
             pageSize: Joi.number().integer(),
         })
-        .min(1),
+   
 };
 
 

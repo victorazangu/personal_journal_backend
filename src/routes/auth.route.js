@@ -14,8 +14,6 @@ router.get("/profile", IsAuthenticated, authController.profile);
 router.patch("/profile", IsAuthenticated, validate(authValidation.updateProfile), authController.updateProfile);
 router.patch("/password", IsAuthenticated, validate(authValidation.updatePassword), authController.updatePassword);
 
-
-
 module.exports = router;
 
 
