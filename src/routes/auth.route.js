@@ -11,6 +11,8 @@ router.get("/", authController.index);
 router.post("/register", validate(authValidation.register), authController.register);
 router.post("/login", validate(authValidation.login), authController.login);
 router.get("/profile", IsAuthenticated, authController.profile);
+router.patch("/profile", IsAuthenticated, validate(authValidation.updateProfile), authController.updateProfile);
+router.patch("/password", IsAuthenticated, validate(authValidation.updatePassword), authController.updatePassword);
 
 
 

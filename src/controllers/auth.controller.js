@@ -83,10 +83,54 @@ const profile = (req, res) => {
     }
 };
 
+const updateProfile = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const { name, email } = req.body;
+        const updatedUser = await User.update(
+            { name, email },
+            { where: { id: userId }, returning: true }
+        );
+
+        if (updatedUser[0] === 0) {
+            return res.status(404).json({ error: "User not found", status: "fail", success: false });
+        }
+
+        const updatedUserData = updatedUser[1][0].get();
+        return res.status(200).json({ data: updatedUserData, status: "success", success: true });
+    } catch (error) {
+        return res.status(500).json({ error: "Server side error", status: "fail", success: false });
+    }
+};
+
+
+const updatePassword = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const { currentPassword, newPassword } = req.body;
+        const user = await User.findByPk(userId);
+        if (!user) {
+            return res.status(404).json({ error: "User not found", status: "fail", success: false });
+        }
+        const isMatch = await bcrypt.compare(currentPassword, user.password);
+
+        if (!isMatch) {
+            return res.status(400).json({ error: "Current password is incorrect", status: "fail", success: false });
+        }
+        const salt = bcrypt.genSaltSync(10)
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+        await user.update({ password: hashedPassword });
+        return res.status(200).json({ message: "Password updated successfully", status: "success", success: true });
+    } catch (error) {
+        return res.status(500).json({ error: "Server side error", status: "fail", success: false });
+    }
+};
 
 module.exports = {
     index,
     register,
     login,
-    profile
+    profile,
+    updateProfile,
+    updatePassword
 }

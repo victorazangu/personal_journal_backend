@@ -1,6 +1,6 @@
 const { Category, Journal } = require("../models")
-
-
+const Sequelize = require("sequelize");
+const { Op } = Sequelize;
 
 const createJournal = async (req, res) => {
     try {
@@ -49,14 +49,34 @@ const listAllCategories = async (req, res) => {
 
 const listAllUsersJournalEntry = async (req, res) => {
     try {
+        let { period, from, to } = req.query;
         const userId = req.user.id;
         const page = parseInt(req.query.page) || 1;
         const pageSize = parseInt(req.query.pageSize) || 10;
         const offset = (page - 1) * pageSize;
+
+        let whereClause = {
+            author: userId,
+        };
+        if (period) {
+            if (period === 'weekly') {
+                from = new Date();
+                from.setDate(from.getDate() - from.getDay());
+                to = new Date();
+            } else if (period === 'monthly') {
+                from = new Date();
+                from.setDate(1);
+                to = new Date();
+            }
+        } else if (from && to) {
+            from = new Date(from);
+            to = new Date(to);
+            whereClause.createdAt = {
+                [Op.between]: [from, to],
+            };
+        }
         const journalEntries = await Journal.findAll({
-            where: {
-                author: userId,
-            },
+            where: whereClause,
             include: [
                 {
                     model: Category,
@@ -68,23 +88,44 @@ const listAllUsersJournalEntry = async (req, res) => {
             limit: pageSize,
             order: [['createdAt', 'DESC']],
         });
-        return res.status(200).json({ data: journalEntries, page, pageSize, status: "success", success: true });
+
+        return res.status(200).json({ data: journalEntries, page, pageSize, period, from, to, status: "success", success: true });
     } catch (error) {
+        console.error("Error fetching user's journal entries:", error);
         return res.status(500).json({ error: "Server side error", status: "fail", success: false });
     }
 };
 
-
 const listAllJournalEntriesByCategory = async (req, res) => {
     try {
         const categoryId = req.params.id;
+        let { period, from, to } = req.query;
         const page = parseInt(req.query.page) || 1;
         const pageSize = parseInt(req.query.pageSize) || 10;
         const offset = (page - 1) * pageSize;
+
+        let whereClause = {
+            category_id: categoryId,
+        };
+        if (period) {
+            if (period === 'weekly') {
+                from = new Date();
+                from.setDate(from.getDate() - from.getDay()); 
+                to = new Date();
+            } else if (period === 'monthly') {
+                from = new Date();
+                from.setDate(1); 
+                to = new Date();
+            }
+        } else if (from && to) {
+            from = new Date(from);
+            to = new Date(to);
+            whereClause.createdAt = {
+                [Op.between]: [from, to],
+            };
+        }
         const journalEntries = await Journal.findAll({
-            where: {
-                category_id: categoryId,
-            },
+            where: whereClause,
             include: [
                 {
                     model: Category,
@@ -96,8 +137,10 @@ const listAllJournalEntriesByCategory = async (req, res) => {
             limit: pageSize,
             order: [['createdAt', 'DESC']],
         });
-        return res.status(200).json({ data: journalEntries, page, pageSize, status: "success", success: true });
+
+        return res.status(200).json({ data: journalEntries, page, pageSize, period, from, to, status: "success", success: true });
     } catch (error) {
+        console.error("Error fetching journal entries by category:", error);
         return res.status(500).json({ error: "Server side error", status: "fail", success: false });
     }
 };

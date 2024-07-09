@@ -18,7 +18,24 @@ const login = {
   }),
 };
 
+const updateProfile = {
+  body: Joi.object().keys({
+    name: Joi.string().required(),
+    email: Joi.string().required().email(),
+    phone: Joi.string().required(),
+    image: Joi.string().allow('', null),
+  }),
+};
+
+const updatePassword = {
+  body: Joi.object().keys({
+    password: Joi.string().required(),
+  }),
+};
+
+
 module.exports = {
   register,
   login,
+  updateProfile
 };

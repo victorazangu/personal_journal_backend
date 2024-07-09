@@ -16,6 +16,7 @@ const listAllCategories = {
         .keys({
             page: Joi.number().integer(),
             pageSize: Joi.number().integer(),
+    
         })
         .min(1),
 };
@@ -28,6 +29,9 @@ const listAllJournalEntriesByCategory = {
         .keys({
             page: Joi.number().integer(),
             pageSize: Joi.number().integer(),
+            period: Joi.string(),
+            from: Joi.string(),
+            to: Joi.string()
         })
 };
 
@@ -36,6 +40,9 @@ const listAllUsersJournalEntry = {
         .keys({
             page: Joi.number().integer(),
             pageSize: Joi.number().integer(),
+            period: Joi.string(),
+            from: Joi.string(),
+            to: Joi.string()
         })
 };
 
@@ -53,7 +60,7 @@ const updateJournalEntry = {
         title: Joi.string(),
         content: Joi.string(),
         category_id: Joi.string(),
-    }), 
+    }),
 };
 
 const deleteJournalEntry = {
