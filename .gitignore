@@ -1,2 +1,4 @@
 .env
 /logs
+public.pem 
+private.pem

@@ -104,3 +104,57 @@
 
 - ::ffff:127.0.0.1 - - 09/Jul/2024:00:32:54 +0300 "GET /api/v1/auth/profile HTTP/1.1" 500 38 "-" "Thunder Client (https://www.thunderclient.com)"
 
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:35:54 +0300 "GET /api/v1/auth/profile HTTP/1.1" 500 1360 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:36:26 +0300 "GET /api/v1/auth/profile HTTP/1.1" 500 1356 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:36:59 +0300 "GET /api/v1/auth/profile HTTP/1.1" 500 1357 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:37:24 +0300 "GET /api/v1/auth/profile HTTP/1.1" 401 53 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:38:07 +0300 "POST /api/v1/auth/login HTTP/1.1" 200 951 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:08:38:29 +0300 "GET /api/v1/auth/profile HTTP/1.1" 404 991 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:08:39:10 +0300 "GET /api/v1/auth/profile HTTP/1.1" 404 991 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:08:40:14 +0300 "GET /api/v1/auth/profile HTTP/1.1" 404 991 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:08:41:19 +0300 "GET /api/v1/auth/profile HTTP/1.1" 404 158 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:42:20 +0300 "GET /api/v1/auth/profile HTTP/1.1" 404 158 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:49:06 +0300 "GET /api/v1/auth/profile HTTP/1.1" 500 1374 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:50:33 +0300 "GET /api/v1/auth/profile HTTP/1.1" 200 111 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:51:20 +0300 "GET /api/v1/auth/profile HTTP/1.1" 200 111 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:51:45 +0300 "GET /api/v1/auth/profile HTTP/1.1" 500 1368 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:08:52:30 +0300 "GET /api/v1/auth/profile HTTP/1.1" 500 35 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:08:53:27 +0300 "GET /api/v1/auth/profile HTTP/1.1" 200 111 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:08:54:07 +0300 "GET /api/v1/auth/profile HTTP/1.1" 200 111 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:11:51:46 +0300 "POST /api/v1/auth/journals HTTP/1.1" 404 160 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:11:51:58 +0300 "POST /api/v1/journals HTTP/1.1" 400 1416 "-" "Thunder Client (https://www.thunderclient.com)"
+
+- ::ffff:127.0.0.1 - - 09/Jul/2024:11:53:18 +0300 "POST /api/v1/journals HTTP/1.1" 400 1350 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:11:53:24 +0300 "POST /api/v1/journals HTTP/1.1" 500 61 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:11:54:08 +0300 "POST /api/v1/categories HTTP/1.1" 201 147 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:11:54:27 +0300 "POST /api/v1/journals HTTP/1.1" 201 241 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:11:54:36 +0300 "GET /api/v1/journals HTTP/1.1" 200 297 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:11:54:49 +0300 "GET /api/v1/journals/1 HTTP/1.1" 404 67 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:11:55:12 +0300 "GET /api/v1/journals HTTP/1.1" 200 297 "-" "Thunder Client (https://www.thunderclient.com)"
+
+USER:  First name: John Doe Email: johndoe@example.com id: 1 IP:::ffff:127.0.0.1 ::ffff:127.0.0.1 - - 09/Jul/2024:11:55:21 +0300 "GET /api/v1/journals/2 HTTP/1.1" 200 272 "-" "Thunder Client (https://www.thunderclient.com)"
+

@@ -2,6 +2,9 @@ const { User } = require("../models")
 const bcrypt = require('bcrypt');
 const { tokenService, userService } = require("../services")
 const config = require("../config/config")
+const path = require("path")
+const fs = require("fs")
+const jwt = require("jsonwebtoken")
 
 const index = (req, res) => {
     return res.status(200).json({ message: "Hello World!" });
@@ -57,35 +60,26 @@ const login = async (req, res) => {
     }
 };
 
-const profile = async (req, res, next) => {
-    try {
-        const folderPath = path.resolve(`${process.cwd()}/keys`);
-        const privateKey = fs.readFileSync(`${folderPath}/private.pem`, 'utf8');
-        
-        const token = req.headers.authorization?.split(' ');
-        if (!(token && token[0] === 'Bearer' && token[1].match(/\S+\.\S+\.\S+/))) {
-            return res.status(401).json({
-                message: 'Unauthorized: Invalid token format',
-            });
-        }
-        
+const profile = (req, res) => {
+    const folderPath = path.resolve(`${process.cwd()}/keys`);
+    const privateKey = fs.readFileSync(`${folderPath}/private.pem`, 'utf8');
+    const token = req.headers.authorization?.split(' ');
+    if (token[0] === 'Bearer' && token[1].match(/\S+\.\S+\.\S+/) !== null) {
         jwt.verify(
             token[1],
             privateKey,
             { issuer: config.jwt.issuer, algorithms: [config.jwt.algo], header: { typ: 'Bearer token' } },
             async function (err, decoded) {
                 if (err) {
-                    return res.status(401).json({
+                    res.status(401).json({
                         message: 'Expired or invalid token, please log in',
                     });
                 } else {
-                    req.user = decoded.payload; 
-                    next(); 
+                    const decodedData = decoded.payload;
+                    res.status(200).json({ user: decodedData });
                 }
             }
         );
-    } catch (error) {
-        next(error); 
     }
 };
 

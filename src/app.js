@@ -76,7 +76,7 @@ app.use('/api/v1', routes);
 // })();
 
 app.use((req, res, next) => {
-    next(new ApiError(404, 'Not found'));
+    next(new ApiError(500, 'Server side error'));
 });
 
 app.use(errorConverter);
